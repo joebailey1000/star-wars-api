@@ -1,2 +1,5 @@
 # star-wars-api
-Interactive command line software that retrieves data from SWAPI
+
+This is my first API project!
+
+To use, change directory to this folder and run 'node main.js'
