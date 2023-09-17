@@ -80,15 +80,12 @@ class MenuManager{
                 let presentTypes=[]
                 let typesKey=[]
                 self.relevantTypes.forEach(type=>{
-                    if (response.data.hasOwnProperty(type)) {
-                        if (response.data[type]===null) delete response.data[type]
-                        else {
-                            presentTypes.push(response.data[type])
-                            if (typeof response.data[type]==='string') typesKey.push(type)
-                            else typesKey.push(Array(response.data[type].length).fill(type))
+                    if (response.data[type]) {
+                        presentTypes.push(response.data[type])
+                        if (typeof response.data[type]==='string') typesKey.push(type)
+                        else typesKey.push(Array(response.data[type].length).fill(type))
                     }
-                    }
-                })
+                    })
                 presentTypes = presentTypes.flat()
                 typesKey=typesKey.flat()
                 return Promise.all(presentTypes.map(obj=>axios.get(obj)).concat([typesKey,response]))
